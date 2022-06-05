@@ -31,7 +31,6 @@ function onDrop(event) {
     event
         .dataTransfer
         .clearData();
-    draggableElement.removeAttribute("draggable")
-    draggableElement.removeAttribute("ondragstart")
+    
     console.log(event);
 }
