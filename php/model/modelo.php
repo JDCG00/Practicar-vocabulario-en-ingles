@@ -8,19 +8,9 @@
         function __construct(){
             $this->conex = new mysqli(SERVIDOR,USUARIO,PASSWORD,BD);
         }
-        function test(){
-            $consulta = "SELECT * FROM ejercicios;";
-            $resultado = $this->conex -> query($consulta);
-            echo $consulta;
-            while ($filas = $resultado->fetch_array()) {
-                $this->filas[] = $filas;
-            }
-            echo "<br>";
-            print_r($this->filas);
-            
+        function insertEjercicio($nombre, $descripcion, $tipo, $clase, $codigoEjercicio){
+            $consulta = "INSERT INTO ejercicios (nombre, descripcion, tipo, idClase, codEjercicio) VALUES ($nombre, $descripcion, $tipo, $clase, $codigoEjercicio);";
+            $this->conex -> query($consulta);
         }
     }
-
-    $modelo = new Modelo;
-    $modelo -> test();
 ?>
