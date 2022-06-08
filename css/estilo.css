@@ -469,3 +469,17 @@ footer{
 }
 
 /*-----------*/
+
+.palabras {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #3e4596;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 700px;
+    padding: 20px;
+    width: 370px;
+    position: absolute;
+    right: 170px;
+}
