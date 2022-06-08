@@ -1,5 +1,4 @@
 <?php
-
     class Controlador{
         public $modelo;
         function __construct(){
@@ -8,6 +7,22 @@
         }
         function crearEjercicioVista(){
             require_once('../view/crearEjercicio.php');
+        }
+        function jugarVista(){
+            require_once('../view/juega.php');
+        }
+        function informacionVista(){
+            require_once('../view/informacion.php');
+        }
+        function contactoVista(){
+            require_once('../view/contacto.php');
+        }
+        function loginVista(){
+            require_once('../view/login.php');
+        }
+        function añadirPalabras(){
+            $this->modelo -> listarTodasPalabras();
+            $this->todasPalabras = $this->modelo->filas;
         }
         function crearEjercicio(){
             if (isset($_POST['crear'])) {
@@ -27,7 +42,8 @@
                         $codigoEjercicio .= $caracteres[$indice];
                     }
                     $codigoEjercicio = "'$codigoEjercicio'";
-                    $this -> modelo -> insertEjercicio($nombre, $descripcion, $tipo, $clase, $codigoEjercicio);
+                    $palabras = $_POST['palabras'];
+                    $this -> modelo -> insertEjercicio($nombre, $descripcion, $tipo, $clase, $codigoEjercicio, $palabras);
                 }
             }
         }
@@ -39,8 +55,19 @@
         switch ($_GET['accion']) {
             case 'crear':
                 $controlador->crearEjercicioVista();
-                break;
-            
+                break;            
+            case 'jugar':
+                $controlador->jugarVista();
+                break;            
+            case 'informacion':
+                $controlador->informacionVista();
+                break;            
+            case 'contacto':
+                $controlador->contactoVista();
+                break;            
+            case 'login':
+                $controlador->loginVista();
+                break;            
             default:
                 header('Location:../view/accion_no_encontrada.html');
                 break;

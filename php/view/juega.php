@@ -11,13 +11,13 @@
 <body>
     <nav>
         <ul id="panel-navegacion" class="nav nav-boton">
-            <li class="icono"><a href="../index.php" class="nav-link"><img src="../../imgs/english.png"></a></li>
+            <li class="icono"><a href="../../index.html" class="nav-link"><img src="../../imgs/english.png"></a></li>
             <li><a href="#" class="nav-link activado">Juega</a></li>
-            <li><a href="informacion.php" class="nav-link">Información</a></li>
-            <li><a href="contacto.php" class="nav-link">Contacta</a></li>
+            <li><a href="controlador.php?accion=informacion" class="nav-link">Información</a></li>
+            <li><a href="controlador.php?accion=contacto" class="nav-link">Contacta</a></li>
         </ul>
         <ul class="nav nav-boton" id="login">
-            <li id="inicio_sesion" class="icono"><a href="login.php" class="nav-link"><img src="../../imgs/user.png">Login</a></li>
+            <li id="inicio_sesion" class="icono"><a href="controlador.php?accion=login" class="nav-link"><img src="../../imgs/user.png">Login</a></li>
         </ul>
     </nav>
     <div class="contenedor">
@@ -27,9 +27,19 @@
             <p class="draggable" draggable="true">Red</p>
             <p class="draggable" draggable="true">Green</p>
             <p class="draggable" draggable="true">Yellow</p>
+            <p class="draggable" draggable="true">Teacher</p>
+            <p class="draggable" draggable="true">Pencil</p>
+            <p class="draggable" draggable="true">Snowy</p>
+            <p class="draggable" draggable="true">Eraser</p>
         </div>
         <div class="container">
             Colors
+        </div>
+        <div class="container">
+            School
+        </div>
+        <div id="corregir" class="nav nav-boton">
+            <div><a href="" class="nav-link activado">Corregir</a></div>
         </div>
     </div>
     <footer>

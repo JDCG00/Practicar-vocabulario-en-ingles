@@ -122,10 +122,8 @@ footer{
     padding-bottom: 1rem;
     background-color: #a2cbcb;
     background-image: linear-gradient(180deg, #a2cbcb 0%, #FC00FF 100%);
-    position: absolute;
     height: 80px;
     width: 100%;
-    bottom: -160px;
 }
 .icono_footer{
     display: flex;
@@ -484,4 +482,31 @@ footer{
     font-size: 16px;
     font-weight: 600;
     margin-top: 10px;
+}
+.palabras {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #3e4596;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 370px;
+    position: absolute;
+    right: 170px;
+}
+.selectPalabras{
+    margin-top: 6px;
+}
+.palabras2 {
+    width: 250px;
+    position: absolute;
+    right: 170px;
+}
+#cut_palabras{
+    width: 143px;
+}
+#corregir{
+    width: 0;
+    margin-right: 20px;
 }

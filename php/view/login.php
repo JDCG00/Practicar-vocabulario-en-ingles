@@ -11,14 +11,14 @@
 <body>
     <nav>
         <ul id="panel-navegacion" class="nav nav-boton">
-            <li class="icono"><a href="../index.php" class="nav-link"><img src="../../imgs/english.png"></a></li>
-            <li><a href="juega.php" class="nav-link">Juega</a></li>
-            <li><a href="informacion.php" class="nav-link">Información</a></li>
-            <li><a href="contacto.php" class="nav-link">Contacta</a></li>
+            <li class="icono"><a href="../../index.html" class="nav-link"><img src="../../imgs/english.png"></a></li>
+            <li><a href="controlador.php?accion=jugar" class="nav-link">Juega</a></li>
+            <li><a href="controlador.php?accion=informacion" class="nav-link">Información</a></li>
+            <li><a href="controlador.php?accion=contacto" class="nav-link">Contacta</a></li>
         </ul>
         <ul class="nav nav-boton" id="login">
             <li id="inicio_sesion" class="icono"><a href="#" class="nav-link activado"><img src="../../imgs/user.png">Login</a></li>
-            <li><a href="crearEjercicio.php" class="nav-link">Crear Ejercicio</a></li>
+            <li><a href="controlador.php?accion=crear" class="nav-link">Crear Ejercicio</a></li>
         </ul>
     </nav>
     <div class="contenedor">

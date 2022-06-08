@@ -11,13 +11,13 @@
 <body>
     <nav>
         <ul id="panel-navegacion" class="nav nav-boton">
-            <li class="icono"><a href="../index.php" class="nav-link"><img src="../../imgs/english.png"></a></li>
-            <li><a href="juega.php" class="nav-link">Juega</a></li>
-            <li><a href="informacion.php" class="nav-link">Información</a></li>
-            <li><a href="contacto.php" class="nav-link">Contacta</a></li>
+            <li class="icono"><a href="../../index.html" class="nav-link"><img src="../../imgs/english.png"></a></li>
+            <li><a href="controlador.php?accion=jugar" class="nav-link">Juega</a></li>
+            <li><a href="controlador.php?accion=informacion" class="nav-link">Información</a></li>
+            <li><a href="controlador.php?accion=contacto" class="nav-link">Contacta</a></li>
         </ul>
         <ul class="nav nav-boton" id="login">
-            <li id="inicio_sesion" class="icono"><a href="login.php" class="nav-link"><img src="../../imgs/user.png">Login</a></li>
+            <li id="inicio_sesion" class="icono"><a href="controlador.php?accion=login" class="nav-link"><img src="../../imgs/user.png">Login</a></li>
             <li><a href="#" class="nav-link activado">Crear Ejercicio</a></li>
         </ul>
     </nav>
@@ -54,24 +54,58 @@
                 <div class="cut"></div>
                 <label for="clase" class="placeholder">Clase</label>
             </div>
-            <div class="input-container ic2">
-                <input class="input" type="text" placeholder=" " name="palabras" />
-                <div class="cut"></div>
-                <label for="palabras" class="placeholder">Nº de palabras a añadir</label>
+            <div class="palabras2">
+                <div class="input-container ic2">
+                    <input class="input" type="number" placeholder=" " name="nPalabras" min="1"/>
+                    <div id="cut_palabras" class="cut"></div>
+                    <label for="palabras" class="placeholder">Nº de palabras a añadir</label>
+                </div>            
+                <input class="submit" type="submit" name="añadir" value="Añadir Palabras">
             </div>
+            <?php
+                require_once('../controller/controlador.php');
+                $controlador = new Controlador;
+                if (isset($_POST['añadir'])) {
+                    $controlador->añadirPalabras();
+                    $todasPalabras = $controlador->todasPalabras;
+                    if (!empty($_POST['nPalabras'])) {
+                        echo "
+                                <div class='palabras'>
+                                    <div class='title'>Palabras a añadir</div>
+                        ";
+                        for ($i=0; $i < $_POST['nPalabras']; $i++) { 
+                            echo "<select class='selectPalabras' name='palabras[]'>";
+                            foreach ($todasPalabras as $palabra) {
+                                echo "<option value='".$palabra['idPalabra']."'>".$palabra['nombre']."</option>";
+                            }
+                            echo "</select>";
+                            
+                        }
+                        echo    "<input class='submit' type='submit' name='volver' value='Volver'>";
+                        echo "  </div>";
+                        if (isset($_POST['volver'])) {
+                            header("Location: controlador.php?accion=crear");
+                        }
+                    }else{
+                        echo "<div class=error>Debe rellenar el número de palabras.</div>";
+                    }
+                }
+
+            ?>
+            
             <input class="submit" type="submit" name="crear" value="Crear Ejercicio">
         </form>
         <?php
             if (isset($_POST['crear'])) {
-                require_once('../controller/controlador.php');
-                $controlador = new Controlador;
+                
                 $controlador->crearEjercicio();
 
                 if (empty($_POST['nombre'])) {
-                    echo "<div class=error>Debe rellenar el nombre.</div>";
+                    echo "<div class=error>Debe rellenar el nombre y el número de palabras.</div>";
                 }else{
                     echo "<div class=correcto>Datos introducidos correctamente.</div>";
                 }
+                print_r($_POST);
             }
         ?>
     </div>
