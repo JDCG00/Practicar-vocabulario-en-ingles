@@ -23,7 +23,7 @@
     <div class="contenedor">
         <div class="container">
             Words
-            <p class="draggable" draggable="true">Blue</p>
+            <p id="1" class="draggable" draggable="true">Blue</p>
             <p class="draggable" draggable="true">Red</p>
             <p class="draggable" draggable="true">Green</p>
             <p class="draggable" draggable="true">Yellow</p>
@@ -50,6 +50,7 @@
             <img src="../../imgs/eng.png">
         </a>
         <script src="../../js/drag-and-drop.js"></script>
+        <script src="../../js/jugar.js"></script>
     </footer>
 </body>
 </html>

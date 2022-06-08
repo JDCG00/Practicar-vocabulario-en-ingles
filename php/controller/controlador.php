@@ -26,7 +26,7 @@
         }
         function crearEjercicio(){
             if (isset($_POST['crear'])) {
-                if (!empty($_POST['nombre'])) {
+                if (!empty($_POST['nombre'] && isset($_POST['palabras']))) {
                     $nombre = "'".$_POST['nombre']."'";
                     if (empty($_POST['descripcion'])) {
                         $descripcion = 'NULL';

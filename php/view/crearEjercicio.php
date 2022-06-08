@@ -100,7 +100,7 @@
                 
                 $controlador->crearEjercicio();
 
-                if (empty($_POST['nombre'])) {
+                if (empty($_POST['nombre'] && isset($_POST['palabras']))) {
                     echo "<div class=error>Debe rellenar el nombre y el número de palabras.</div>";
                 }else{
                     echo "<div class=correcto>Datos introducidos correctamente.</div>";
