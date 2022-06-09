@@ -47,8 +47,28 @@
                 }
             }
         }
-        function codigo(){
-            
+        function accederCodigo(){
+            if (isset($_POST['acceder'])) {
+                if (!empty($_POST['codigo'])) {
+                    $this->modelo->sacarCodigo();
+                    $this->codigos = $this->modelo->codigos;
+                    
+                    $booleano = false;
+                    foreach ($this->codigos as $codigo) {
+                        if($_POST['codigo']===$codigo['codEjercicio']){
+                            $booleano = true;
+                            break;
+                        }
+                    }
+                    if ($booleano==true) {
+                        $idEjercicio = $codigo['idEjercicio'];
+                        $this->modelo->sacarPalabrasEjercicios($idEjercicio);
+                        if (isset($this->modelo->palabras)) {
+                            $this->palabras = $this->modelo->palabras;
+                        }
+                    }
+                }
+            }
         }
     }
 

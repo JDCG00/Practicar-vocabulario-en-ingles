@@ -32,29 +32,57 @@
         </form>
         <?php
             if (isset($_POST['acceder'])) {
-                echo "
-                    <div class='container'>
-                        Words";
-                
-                echo     "<p id='1' class='draggable' draggable='true'>Blue</p>";
-                        
-                        // <p class='draggable' draggable='true'>Red</p>
-                        // <p class='draggable' draggable='true'>Green</p>
-                        // <p class='draggable' draggable='true'>Yellow</p>
-                        // <p class='draggable' draggable='true'>Teacher</p>
-                        // <p class='draggable' draggable='true'>Pencil</p>
-                        // <p class='draggable' draggable='true'>Snowy</p>
-                        // <p class='draggable' draggable='true'>Eraser</p>
-                echo "</div>
-                    <div class='container'>
-                        Colors
-                    </div>
-                    <div class='container'>
-                        School
-                    </div>
-                    <div id='corregir' class='nav nav-boton'>
-                        <div><a href='' class='nav-link activado'>Corregir</a></div>
-                    </div>";
+                if (!empty($_POST['codigo'])) {
+                    require_once('../controller/controlador.php');
+                    $controlador = new Controlador;
+                    $controlador->accederCodigo();
+                    $codigos = $controlador->codigos;
+                    
+                    $booleano = false;
+                    foreach ($codigos as $codigo) {
+                        if($_POST['codigo']===$codigo['codEjercicio']){
+                            $booleano = true;
+                            break;
+                        }
+                    }    
+                    switch ($booleano) {
+                        case true:
+                            echo "
+                                <style>
+                                    #formCodigo{
+                                        display:none;
+                                    }
+                                </style>
+                            ";
+                            echo "<form id='formPalabras' class='formPalabras' action='#' method='post'>
+                                    <div class='container'>
+                                        Words";
+                            if (isset($controlador->palabras)) {
+                                $palabras = $controlador->palabras;
+                                foreach ($palabras as $palabra) {
+                                    echo     "<p id='".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
+                                }
+                            }else{
+                                echo "<div class=error>No existen palabras.</div>";
+                            }
+                            echo "  </div>
+                                        <div class='container'>
+                                            Colors
+                                        </div>
+                                        <div class='container'>
+                                            School
+                                        </div>
+                                        <button id='corregir' class='submit' type='button' name='corregir'>Corregir</button>
+                                </form>
+                                ";
+                            break;
+                        case false:
+                            echo "<div class=error>Debe acceder con un código correcto.</div>";
+                            break;
+                    }
+                }else {
+                    echo "<div class=error>Debe poner un código.</div>";
+                }
             }
             
         ?>

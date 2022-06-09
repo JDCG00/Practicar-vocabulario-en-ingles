@@ -9,13 +9,9 @@
             $this->conex = new mysqli(SERVIDOR,USUARIO,PASSWORD,BD);
         }
         function insertEjercicio($nombre, $descripcion, $tipo, $clase, $codigoEjercicio, $palabras){
-            $insertarEjercicios = "INSERT INTO ejercicios (nombre, descripcion, tipo, idClase, codEjercicio) VALUES ($nombre, $descripcion, $tipo, $clase, $codigoEjercicio);";
-
-            $sacarUltimoId = "SELECT idEjercicio FROM ejercicios ORDER BY idEjercicio DESC LIMIT 1;";
+            $insertarEjercicios = "INSERT INTO ejercicios (nombre, descripcion, tipo, idClase, codEjercicio) VALUES ($nombre, $descripcion, $tipo, $clase, $codigoEjercicio);";            
             $this->conex -> query($insertarEjercicios);
-            $resultado = $this->conex ->query($sacarUltimoId);
-            $filaUltId = $resultado->fetch_array();
-            $id = $filaUltId['idEjercicio'];
+            $id = $this->conex->insert_id;
             foreach ($palabras as $palabra) {
                 $insertarPalabrasEjercicio = "INSERT INTO ejercicios_palabras VALUES($id, $palabra);";
                 $this->conex -> query($insertarPalabrasEjercicio);
@@ -29,14 +25,19 @@
             }
         }
         function sacarCodigo(){
-
+            $sacarTodosCodigos = "SELECT idEjercicio, codEjercicio FROM ejercicios;";
+            $resultado = $this->conex->query($sacarTodosCodigos);
+            while ($codigo = $resultado->fetch_array()) {
+                $this->codigos[] = $codigo;
+            }
         }
-        function sacarPalabrasEjercicios(){
-            $sacarPalabras = "SELECT ejercicios_palabras.idEjercicio, palabras.nombre FROM ejercicios_palabras INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra WHERE idEjercicio=5;";
+        function sacarPalabrasEjercicios($idEjercicio){
+            $sacarPalabras = "SELECT palabras.idPalabra, palabras.nombre FROM ejercicios_palabras INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra WHERE idEjercicio=$idEjercicio;";
+            $resultado = $this->conex ->query($sacarPalabras);
 
-            $this->conex ->query($sacarPalabras);
-            
-
+            while ($palabra = $resultado->fetch_array()) {
+                $this->palabras[] = $palabra;
+            }
         }
     }
 ?>

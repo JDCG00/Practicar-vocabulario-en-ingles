@@ -148,7 +148,7 @@ footer{
     padding: 1rem;
     margin-top: 1rem;
     color: white;
-    width: 20%;
+    width: 100%;
 }
 
 .draggable {
@@ -506,7 +506,6 @@ footer{
 #cut_palabras{
     width: 143px;
 }
-#corregir{
-    width: 0;
-    margin-right: 20px;
+.formPalabras{
+    width: 200px;
 }
