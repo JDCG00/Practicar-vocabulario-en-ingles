@@ -47,6 +47,9 @@
                 }
             }
         }
+        function codigo(){
+            
+        }
     }
 
     $controlador = new Controlador;

@@ -9,3 +9,7 @@ xhttp.send(JSON.stringify(datos))
 
 
 console.log(value);
+
+let formularioCodigo = document.getElementById("formCodigo")
+let acceder = document.getElementById("acceder")
+acceder.onclick = formularioCodigo.remove()

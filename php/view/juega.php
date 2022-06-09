@@ -21,26 +21,44 @@
         </ul>
     </nav>
     <div class="contenedor">
-        <div class="container">
-            Words
-            <p id="1" class="draggable" draggable="true">Blue</p>
-            <p class="draggable" draggable="true">Red</p>
-            <p class="draggable" draggable="true">Green</p>
-            <p class="draggable" draggable="true">Yellow</p>
-            <p class="draggable" draggable="true">Teacher</p>
-            <p class="draggable" draggable="true">Pencil</p>
-            <p class="draggable" draggable="true">Snowy</p>
-            <p class="draggable" draggable="true">Eraser</p>
-        </div>
-        <div class="container">
-            Colors
-        </div>
-        <div class="container">
-            School
-        </div>
-        <div id="corregir" class="nav nav-boton">
-            <div><a href="" class="nav-link activado">Corregir</a></div>
-        </div>
+         <form id="formCodigo" class="form" action="#" method="post">
+            <div class="subtitle">Introducir el código del ejercicio</div>
+            <div class="input-container ic2">
+                <input class="input" type="text" placeholder=" " name="codigo" minlength="6" maxlength="6" />
+                <div class="cut"></div>
+                <label for="codigo" class="placeholder">Código</label>
+            </div>
+            <input id="acceder" class="submit" type="submit" name="acceder" value="Acceder">
+        </form>
+        <?php
+            if (isset($_POST['acceder'])) {
+                echo "
+                    <div class='container'>
+                        Words";
+                
+                echo     "<p id='1' class='draggable' draggable='true'>Blue</p>";
+                        
+                        // <p class='draggable' draggable='true'>Red</p>
+                        // <p class='draggable' draggable='true'>Green</p>
+                        // <p class='draggable' draggable='true'>Yellow</p>
+                        // <p class='draggable' draggable='true'>Teacher</p>
+                        // <p class='draggable' draggable='true'>Pencil</p>
+                        // <p class='draggable' draggable='true'>Snowy</p>
+                        // <p class='draggable' draggable='true'>Eraser</p>
+                echo "</div>
+                    <div class='container'>
+                        Colors
+                    </div>
+                    <div class='container'>
+                        School
+                    </div>
+                    <div id='corregir' class='nav nav-boton'>
+                        <div><a href='' class='nav-link activado'>Corregir</a></div>
+                    </div>";
+            }
+            
+        ?>
+        
     </div>
     <footer>
         <div>

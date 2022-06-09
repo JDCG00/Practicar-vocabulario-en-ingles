@@ -22,7 +22,7 @@
         </ul>
     </nav>
     <div class="contenedor">
-        <form class="form" action="#" method="post" enctype="multipart/form-data">
+        <form class="form" action="#" method="post">
             <div class="title">Crear ejercicios</div>
             <div class="subtitle">Introduzca datos</div>
             <div class="input-container ic1">
@@ -105,7 +105,6 @@
                 }else{
                     echo "<div class=correcto>Datos introducidos correctamente.</div>";
                 }
-                print_r($_POST);
             }
         ?>
     </div>

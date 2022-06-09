@@ -28,5 +28,15 @@
                 $this->filas[] = $fila;
             }
         }
+        function sacarCodigo(){
+
+        }
+        function sacarPalabrasEjercicios(){
+            $sacarPalabras = "SELECT ejercicios_palabras.idEjercicio, palabras.nombre FROM ejercicios_palabras INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra WHERE idEjercicio=5;";
+
+            $this->conex ->query($sacarPalabras);
+            
+
+        }
     }
 ?>
