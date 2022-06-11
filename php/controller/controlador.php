@@ -11,6 +11,9 @@
         function jugarVista(){
             require_once('../view/juega.php');
         }
+        function codigoVista(){
+            require_once('../view/codigo.php');
+        }
         function informacionVista(){
             require_once('../view/informacion.php');
         }
@@ -62,13 +65,23 @@
                     }
                     if ($booleano==true) {
                         $idEjercicio = $codigo['idEjercicio'];
-                        $this->modelo->sacarPalabrasEjercicios($idEjercicio);
-                        if (isset($this->modelo->palabras)) {
-                            $this->palabras = $this->modelo->palabras;
-                        }
+                        header("Location:controlador.php?accion=jugar&id=$idEjercicio");
                     }
                 }
             }
+        }
+        function listarPalabras(){
+            if (!empty($_GET['id'])) {
+                $idEjercicio = $_GET['id'];
+                $this->modelo->sacarPalabrasEjercicios($idEjercicio);
+                if (isset($this->modelo->palabras) && isset($this->modelo->categorias)) {
+                    $this->palabras = $this->modelo->palabras;
+                    $this->categorias = $this->modelo->categorias;
+                }
+            }
+        }
+        function corrregir(){
+                   
         }
     }
 
@@ -81,6 +94,9 @@
                 break;            
             case 'jugar':
                 $controlador->jugarVista();
+                break;            
+            case 'codigo':
+                $controlador->codigoVista();
                 break;            
             case 'informacion':
                 $controlador->informacionVista();

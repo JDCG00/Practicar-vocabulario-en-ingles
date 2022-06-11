@@ -12,7 +12,7 @@
     <nav>
         <ul id="panel-navegacion" class="nav nav-boton">
             <li class="icono"><a href="../../index.html" class="nav-link"><img src="../../imgs/english.png"></a></li>
-            <li><a href="controlador.php?accion=jugar" class="nav-link">Juega</a></li>
+            <li><a href="controlador.php?accion=codigo" class="nav-link">Juega</a></li>
             <li><a href="controlador.php?accion=informacion" class="nav-link">Información</a></li>
             <li><a href="#" class="nav-link activado">Contacta</a></li>
         </ul>
@@ -23,7 +23,7 @@
     <div class="contenedor"></div>
     <footer>
         <div>
-          <span>© 2021 Juan Diego Carretero Granado</span>
+          <span>© 2022 Juan Diego Carretero Granado</span>
         </div>
         <a class="icono_footer" href="https://github.com/JDCG00/Practicar-vocabulario-en-ingles">
             <img src="../../imgs/eng.png">

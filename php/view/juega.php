@@ -21,76 +21,47 @@
         </ul>
     </nav>
     <div class="contenedor">
-         <form id="formCodigo" class="form" action="#" method="post">
-            <div class="subtitle">Introducir el código del ejercicio</div>
-            <div class="input-container ic2">
-                <input class="input" type="text" placeholder=" " name="codigo" minlength="6" maxlength="6" />
-                <div class="cut"></div>
-                <label for="codigo" class="placeholder">Código</label>
-            </div>
-            <input id="acceder" class="submit" type="submit" name="acceder" value="Acceder">
-        </form>
         <?php
-            if (isset($_POST['acceder'])) {
-                if (!empty($_POST['codigo'])) {
-                    require_once('../controller/controlador.php');
-                    $controlador = new Controlador;
-                    $controlador->accederCodigo();
-                    $codigos = $controlador->codigos;
-                    
-                    $booleano = false;
-                    foreach ($codigos as $codigo) {
-                        if($_POST['codigo']===$codigo['codEjercicio']){
-                            $booleano = true;
-                            break;
-                        }
-                    }    
-                    switch ($booleano) {
-                        case true:
-                            echo "
-                                <style>
-                                    #formCodigo{
-                                        display:none;
-                                    }
-                                </style>
-                            ";
-                            echo "<form id='formPalabras' class='formPalabras' action='#' method='post'>
-                                    <div class='container'>
-                                        Words";
-                            if (isset($controlador->palabras)) {
-                                $palabras = $controlador->palabras;
-                                foreach ($palabras as $palabra) {
-                                    echo     "<p id='".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
-                                }
-                            }else{
-                                echo "<div class=error>No existen palabras.</div>";
-                            }
-                            echo "  </div>
-                                        <div class='container'>
-                                            Colors
-                                        </div>
-                                        <div class='container'>
-                                            School
-                                        </div>
-                                        <button id='corregir' class='submit' type='button' name='corregir'>Corregir</button>
-                                </form>
-                                ";
-                            break;
-                        case false:
-                            echo "<div class=error>Debe acceder con un código correcto.</div>";
-                            break;
+            if (isset($_GET['id'])) {
+                require_once('../controller/controlador.php');
+                $controlador = new Controlador;
+                $idEjercicio = $_GET['id'];
+                $controlador->listarPalabras();
+                echo "<form id='formPalabras' class='formPalabras' action='#' method='post'>
+                        <div id='words' class='container'>
+                            Words";
+                if (isset($controlador->palabras)) {
+                    $palabras = $controlador->palabras;
+                    foreach ($palabras as $palabra) {
+                        echo     "<p id='".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
                     }
-                }else {
-                    echo "<div class=error>Debe poner un código.</div>";
+                }else{
+                    echo "<div class=error>No existen palabras.</div>";
                 }
+                echo "  </div>";
+                if (isset($controlador->categorias)) {
+                    $categorias = $controlador->categorias;
+                    foreach ($categorias as $categoria) {
+                        echo"   
+                            <div id='".$categoria['idCategoria']."' class='container'>
+                                ".$categoria['nombre']."
+                            </div>";
+                    }
+                }
+                echo"
+                        <button id='corregir' class='submit' type='button' name='corregir'>Corregir</button>
+                    </form>
+                    ";
+                    
+                $controlador->corrregir();
             }
-            
+    
         ?>
         
     </div>
     <footer>
         <div>
-          <span>© 2021 Juan Diego Carretero Granado</span>
+          <span>© 2022 Juan Diego Carretero Granado</span>
         </div>
         <a class="icono_footer" href="https://github.com/JDCG00/Practicar-vocabulario-en-ingles">
             <img src="../../imgs/eng.png">

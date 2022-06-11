@@ -38,6 +38,32 @@
             while ($palabra = $resultado->fetch_array()) {
                 $this->palabras[] = $palabra;
             }
+            $sacarCategorias = "SELECT palabras.idPalabra, palabras.idCategoria, categorias.nombre 
+            FROM ejercicios_palabras 
+            INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra
+            INNER JOIN categorias ON categorias.idCategoria = palabras.idCategoria
+            WHERE idEjercicio=$idEjercicio
+            GROUP BY palabras.idCategoria;";
+            $resultado2 = $this->conex->query($sacarCategorias);
+            
+            while ($categoria = $resultado2->fetch_array()) {
+                $this->categorias[] = $categoria;
+            }
+        }
+        function validarPalabras($idEjercicio, $idPalabra, $idCategoria){
+            $validarPalabras = "SELECT palabras.idCategoria, palabras.idPalabra
+            FROM ejercicios_palabras 
+            INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra
+            INNER JOIN categorias ON categorias.idCategoria = palabras.idCategoria
+            WHERE idEjercicio=? AND palabras.idPalabra = ? AND palabras.idCategoria=?;";
+            $resultado = $this->conex->prepare($validarPalabras);
+            $resultado->bind_param("sss", $idEjercicio, $idPalabra, $idCategoria);
+            $resultado->execute();
+            if ($resultado->fetch()!==null) {
+                $this->booleano = true;
+            }else{
+                $this->booleano = false;
+            }
         }
     }
 ?>
