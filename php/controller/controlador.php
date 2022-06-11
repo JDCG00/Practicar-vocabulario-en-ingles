@@ -80,9 +80,9 @@
                 }
             }
         }
-        function corrregir(){
-                   
-        }
+        // function corregir($valores){
+        //     print_r($valores);
+        // }
     }
 
     $controlador = new Controlador;

@@ -53,7 +53,7 @@
                     </form>
                     ";
                     
-                $controlador->corrregir();
+                // $controlador->corregir();
             }
     
         ?>

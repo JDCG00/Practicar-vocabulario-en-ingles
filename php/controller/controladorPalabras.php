@@ -11,9 +11,13 @@
     foreach ($datos as $indice => $dato) {
         $modelo->validarPalabras($idEjercicio, $indice, $dato);
         if($modelo->booleano==true){
-            echo "correcto<br>";
+            $valores[$indice] = 1;
         }else {
-            echo "incorrecto<br>";
+            $valores[$indice] = 0;
         }
     }
+    print_r($valores);
+    // require_once('../controller/controlador.php');
+    // $controlador = new Controlador;
+    // $controlador->corregir($valores);
 ?>
