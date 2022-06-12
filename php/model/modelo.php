@@ -64,6 +64,15 @@
             }else{
                 $this->booleano = false;
             }
+            $resultado->close();
+            $sacarIdPalabras = "SELECT palabras.idPalabra
+            FROM ejercicios_palabras 
+            INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra
+            INNER JOIN categorias ON categorias.idCategoria = palabras.idCategoria
+            WHERE idEjercicio=$idEjercicio AND palabras.idPalabra = $idPalabra;";
+
+            $resultado2 = $this->conex->query($sacarIdPalabras);
+            $this->idPalabras = $resultado2->fetch_assoc();
         }
     }
 ?>

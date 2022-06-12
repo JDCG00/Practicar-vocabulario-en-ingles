@@ -27,13 +27,14 @@
                 $controlador = new Controlador;
                 $idEjercicio = $_GET['id'];
                 $controlador->listarPalabras();
+                
                 echo "<form id='formPalabras' class='formPalabras' action='#' method='post'>
                         <div id='words' class='container'>
                             Words";
                 if (isset($controlador->palabras)) {
                     $palabras = $controlador->palabras;
                     foreach ($palabras as $palabra) {
-                        echo     "<p id='".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
+                        echo     "<p id='id".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
                     }
                 }else{
                     echo "<div class=error>No existen palabras.</div>";
@@ -52,8 +53,8 @@
                         <button id='corregir' class='submit' type='button' name='corregir'>Corregir</button>
                     </form>
                     ";
-                    
-                // $controlador->corregir();
+                
+                
             }
     
         ?>

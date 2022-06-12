@@ -7,9 +7,9 @@ acceder.onclick = peticion
 function peticion() {
     const url = new URLSearchParams(window.location.search);
     const id = url.get('id');
-    const xhttp = new XMLHttpRequest
+    const xhttp = new XMLHttpRequest()
     
-
+    
     
     let palabras = {
         id: id
@@ -23,4 +23,41 @@ function peticion() {
     xhttp.open("POST", "controladorPalabras.php", true)
     xhttp.send(JSON.stringify(palabras)) 
     
+    
+    setTimeout(validacionGET, 20)
+
+    function validacionGET() {
+        const xhttp2 = new XMLHttpRequest()
+        xhttp2.onload = function(){
+            let datos = JSON.parse(xhttp2.responseText)
+            
+            for (const dato in datos) {
+                let pPalabra = document.getElementById('id'+dato)
+                let imagen = document.createElement("img")
+                imagen.setAttribute("id", `imgValidar${dato}`)
+                imagen.setAttribute("class", "imgValidar")
+                let imgValidar = document.getElementById(`imgValidar${dato}`)
+                if(pPalabra.contains(imgValidar)){
+                    imgValidar.remove()
+                    pPalabra.appendChild(imagen)
+                }else{
+                    pPalabra.appendChild(imagen)
+                }
+
+                console.log(pPalabra);
+                if (datos[dato] == "correcto") {
+                    imagen.setAttribute("src", "../../imgs/correcto.png")
+                    console.log("correcto");
+                }else{
+                    imagen.setAttribute("src", "../../imgs/incorrecto.png")
+                    console.log("incorrecto");
+                }
+            }
+            
+        }
+        xhttp2.open("GET", "../../js/validacion.json", true)
+        xhttp2.setRequestHeader('Content-type', 'applications/json')
+        xhttp2.send() 
+        console.log(xhttp2);
+    }
 }
