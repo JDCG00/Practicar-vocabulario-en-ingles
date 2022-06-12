@@ -28,13 +28,15 @@
                 $idEjercicio = $_GET['id'];
                 $controlador->listarPalabras();
                 
-                echo "<form id='formPalabras' class='formPalabras' action='#' method='post'>
+                echo "<div id='formPalabras' class='formPalabras'>
                         <div id='words' class='container'>
-                            Words";
+                            <span class='span_palabras'>Words</span>";
                 if (isset($controlador->palabras)) {
                     $palabras = $controlador->palabras;
                     foreach ($palabras as $palabra) {
-                        echo     "<p id='".$palabra['idPalabra']."' name='palabra".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
+                        echo     "<p id='".$palabra['idPalabra']."' name='palabra".$palabra['idPalabra']."' class='draggable' draggable='true'>
+                                <span class='span_palabras'>".$palabra['nombre']."</span>
+                        </p>";
                     }
                 }else{
                     echo "<div class=error>No existen palabras.</div>";
@@ -45,13 +47,13 @@
                     foreach ($categorias as $categoria) {
                         echo"   
                             <div id='".$categoria['idCategoria']."' class='container'>
-                                ".$categoria['nombre']."
+                                <span class='span_palabras'>".$categoria['nombre']."</span>
                             </div>";
                     }
                 }
                 echo"
                         <button id='corregir' class='submit' type='button' name='corregir'>Corregir</button>
-                    </form>
+                    </div>
                     ";
                 
                 
