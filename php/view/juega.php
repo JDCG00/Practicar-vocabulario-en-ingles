@@ -34,7 +34,7 @@
                 if (isset($controlador->palabras)) {
                     $palabras = $controlador->palabras;
                     foreach ($palabras as $palabra) {
-                        echo     "<p id='id".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
+                        echo     "<p id='".$palabra['idPalabra']."' name='palabra".$palabra['idPalabra']."' class='draggable' draggable='true'>".$palabra['nombre']."</p>";
                     }
                 }else{
                     echo "<div class=error>No existen palabras.</div>";

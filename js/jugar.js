@@ -32,19 +32,18 @@ function peticion() {
             let datos = JSON.parse(xhttp2.responseText)
             
             for (const dato in datos) {
-                let pPalabra = document.getElementById('id'+dato)
+                let pPalabra = document.getElementsByName("palabra"+dato)
                 let imagen = document.createElement("img")
                 imagen.setAttribute("id", `imgValidar${dato}`)
                 imagen.setAttribute("class", "imgValidar")
                 let imgValidar = document.getElementById(`imgValidar${dato}`)
-                if(pPalabra.contains(imgValidar)){
+                if(pPalabra[0].contains(imgValidar)){
                     imgValidar.remove()
-                    pPalabra.appendChild(imagen)
+                    pPalabra[0].appendChild(imagen)
                 }else{
-                    pPalabra.appendChild(imagen)
+                    pPalabra[0].appendChild(imagen)
                 }
 
-                console.log(pPalabra);
                 if (datos[dato] == "correcto") {
                     imagen.setAttribute("src", "../../imgs/correcto.png")
                     console.log("correcto");
