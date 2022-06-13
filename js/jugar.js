@@ -24,7 +24,7 @@ function peticion() {
     xhttp.send(JSON.stringify(palabras)) 
     
     
-    setTimeout(validacionGET, 20)
+    setTimeout(validacionGET, 300)
 
     function validacionGET() {
         const xhttp2 = new XMLHttpRequest()
