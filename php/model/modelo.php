@@ -42,12 +42,12 @@
             while ($palabra = $resultado->fetch_array()) {
                 $this->palabras[] = $palabra;
             }
-            $sacarCategorias = "SELECT palabras.idPalabra, palabras.idCategoria, categorias.nombre 
+            $sacarCategorias = "SELECT COUNT(*), palabras.idCategoria, categorias.nombre
             FROM ejercicios_palabras 
             INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra
             INNER JOIN categorias ON categorias.idCategoria = palabras.idCategoria
-            WHERE idEjercicio=$idEjercicio
-            GROUP BY palabras.idCategoria;";
+            where idEjercicio= $idEjercicio
+            GROUP BY palabras.idCategoria, categorias.nombre;";
             $resultado2 = $this->conex->query($sacarCategorias);
             
             while ($categoria = $resultado2->fetch_array()) {
