@@ -32,6 +32,10 @@
             }
         }
         function sacarPalabrasEjercicios($idEjercicio){
+            $sacarEjercicios = "SELECT * from ejercicios WHERE idEjercicio=$idEjercicio;";
+            $resultado3 = $this->conex->query($sacarEjercicios);
+            $this->sacarEjercicios = $resultado3->fetch_assoc();
+
             $sacarPalabras = "SELECT palabras.idPalabra, palabras.nombre FROM ejercicios_palabras INNER JOIN palabras ON palabras.idPalabra = ejercicios_palabras.idPalabra WHERE idEjercicio=$idEjercicio;";
             $resultado = $this->conex ->query($sacarPalabras);
 
@@ -81,14 +85,17 @@
                 $this->listarCategorias[] = $categoria;
             }
         }
-        function insertarPalabras($nombres){
-            // $insertarPalabras = "INSERT INTO palabras (nombre, idCategoria) VALUES(?, ?);";
-            // $resultado = $this->conex->prepare($insertarPalabras);
-            // foreach ($nombres as $nombre) {
-            //     $resultado->bind_param("ss", $, $);
-            // }
-            // $resultado->execute();
-            // $resultado->close();
+        function insertarPalabras($arrayPalabras){
+            foreach ($arrayPalabras as $nombre => $categoria) {
+                $insertarPalabras = "INSERT INTO palabras (nombre, idCategoria) VALUES(?, ?);";
+                $resultado = $this->conex->prepare($insertarPalabras);
+                $resultado->bind_param("ss", $nombre, $categoria);
+                $resultado->execute();
+            }
+            $resultado->close();
+        }
+        function validarLogin(){
+            
         }
     }
 ?>

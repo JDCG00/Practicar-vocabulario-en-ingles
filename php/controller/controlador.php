@@ -80,6 +80,7 @@
             if (!empty($_GET['id'])) {
                 $idEjercicio = $_GET['id'];
                 $this->modelo->sacarPalabrasEjercicios($idEjercicio);
+                $this->ejercicios = $this->modelo->sacarEjercicios;
                 if (isset($this->modelo->palabras) && isset($this->modelo->categorias)) {
                     $this->palabras = $this->modelo->palabras;
                     $this->categorias = $this->modelo->categorias;
@@ -99,8 +100,10 @@
                 if (!in_array(NULL, $_POST['nombre'])) {
                     $nombres = $_POST['nombre'];
                     $categorias = $_POST['tipo'];
-                    $arrayPalabras[$nombres] = $categorias;
-                    //$this->modelo->insertarPalabras();
+                    foreach ($nombres as $indice => $nombre) {
+                        $arrayPalabras[$nombre] = $categorias[$indice];
+                    }
+                    $this->modelo->insertarPalabras($arrayPalabras);
                 }
             }
         }

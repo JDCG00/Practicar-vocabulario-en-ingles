@@ -27,7 +27,10 @@
                 $controlador = new Controlador;
                 $idEjercicio = $_GET['id'];
                 $controlador->listarPalabras();
-                
+                $ejercicio = $controlador->ejercicios;
+                echo "<h1>".$ejercicio['nombre']."</h1>";
+                echo "<br>";
+                echo "<h4>".$ejercicio['descripcion']."</h4>";
                 echo "<div id='formPalabras' class='formPalabras'>
                         <div id='words' class='container'>
                             <span class='span_palabras'>Words</span>";

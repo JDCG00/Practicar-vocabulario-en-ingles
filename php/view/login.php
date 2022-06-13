@@ -25,7 +25,7 @@
     <div class="contenedor">
         <div class="screen">
             <div class="screen__content">
-                <form class="login">
+                <form class="login" action="#" method="POST">
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
                         <input type="text" class="login__input" placeholder="E-mail">
@@ -34,10 +34,9 @@
                         <i class="login__icon fas fa-lock"></i>
                         <input type="password" class="login__input" placeholder="Contraseña">
                     </div>
-                    <button class="button login__submit">
-                        <span class="button__text">Acceder</span>
+                    <input type="submit" name="acceder" value="Acceder" class="button login__submit">
                         <i class="button__icon fas fa-chevron-right"></i>
-                    </button>				
+                    </input>				
                 </form>
             </div>
             <div class="screen__background">
