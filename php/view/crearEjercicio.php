@@ -19,6 +19,7 @@
         <ul class="nav nav-boton" id="login">
             <li id="inicio_sesion" class="icono"><a href="controlador.php?accion=login" class="nav-link"><img src="../../imgs/user.png">Login</a></li>
             <li><a href="#" class="nav-link activado">Crear Ejercicio</a></li>
+            <li><a href="controlador.php?accion=crearPalabras" class="nav-link">Crear Palabras</a></li>
         </ul>
     </nav>
     <div class="contenedor">

@@ -8,6 +8,12 @@
         function crearEjercicioVista(){
             require_once('../view/crearEjercicio.php');
         }
+        function crearPalabrasVista(){
+            require_once('../view/crearPalabras.php');
+        }
+        function crearNPalabrasVista(){
+            require_once('../view/crearNPalabras.php');
+        }
         function jugarVista(){
             require_once('../view/juega.php');
         }
@@ -80,6 +86,24 @@
                 }
             }
         }
+        function crearPalabras(){
+            if (isset($_POST['añadir']) && !empty($_POST['nPalabras'])) {
+                $nPalabras = $_POST['nPalabras'];
+                header("Location:controlador.php?accion=crearNPalabras&nPalabras=$nPalabras");                   
+            }
+        }
+        function crearNPalabras(){
+            $this->modelo->listarCategorias();
+            $this->listarCategorias = $this->modelo->listarCategorias;
+            if (isset($_POST['crear'])){
+                if (!in_array(NULL, $_POST['nombre'])) {
+                    $nombres = $_POST['nombre'];
+                    $categorias = $_POST['tipo'];
+                    $arrayPalabras[$nombres] = $categorias;
+                    //$this->modelo->insertarPalabras();
+                }
+            }
+        }
     }
 
     $controlador = new Controlador;
@@ -88,6 +112,12 @@
         switch ($_GET['accion']) {
             case 'crear':
                 $controlador->crearEjercicioVista();
+                break;            
+            case 'crearPalabras':
+                $controlador->crearPalabrasVista();
+                break;            
+            case 'crearNPalabras':
+                $controlador->crearNPalabrasVista();
                 break;            
             case 'jugar':
                 $controlador->jugarVista();

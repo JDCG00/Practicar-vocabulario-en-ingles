@@ -349,14 +349,14 @@ footer{
 
 .form {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
     background-color: #15172b;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 700px;
+    height: 1000px;
     padding: 20px;
-    width: 370px;
+    width: 1198px;
+    flex-wrap: wrap;
 }
 
 .title {
@@ -365,6 +365,7 @@ footer{
     font-size: 36px;
     font-weight: 600;
     margin-top: 30px;
+    width: 100%;
 }
 
 .subtitle {
@@ -373,12 +374,14 @@ footer{
     font-size: 16px;
     font-weight: 600;
     margin-top: 10px;
+    width: 100%;
 }
 
 .input-container {
     height: 50px;
     position: relative;
-    width: 100%;
+    width: 9%;
+    margin-left: 10px;
 }
 
 .ic1 {

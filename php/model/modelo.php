@@ -74,5 +74,21 @@
             $resultado2 = $this->conex->query($sacarIdPalabras);
             $this->idPalabras = $resultado2->fetch_assoc();
         }
+        function listarCategorias(){
+            $sacarTodasCategorias = "SELECT * FROM categorias ORDER BY idCategoria ASC;";
+            $resultado = $this->conex->query($sacarTodasCategorias);
+            while ($categoria = $resultado->fetch_array()) {
+                $this->listarCategorias[] = $categoria;
+            }
+        }
+        function insertarPalabras($nombres){
+            // $insertarPalabras = "INSERT INTO palabras (nombre, idCategoria) VALUES(?, ?);";
+            // $resultado = $this->conex->prepare($insertarPalabras);
+            // foreach ($nombres as $nombre) {
+            //     $resultado->bind_param("ss", $, $);
+            // }
+            // $resultado->execute();
+            // $resultado->close();
+        }
     }
 ?>
