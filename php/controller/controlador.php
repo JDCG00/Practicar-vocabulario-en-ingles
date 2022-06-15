@@ -139,7 +139,7 @@
             if (isset($_POST['crear']) && !empty($_POST['nombre'] && $_POST['email'] && $_POST['password'])) {
                 $nombre = "'".$_POST['nombre']."'";
                 $email = "'".$_POST['email']."'";
-                $password = "'".$_POST['nombre']."'";
+                $password = "'".password_hash($_POST['password'], PASSWORD_DEFAULT)."'";
                 echo $nombre, $email, $password;
                 $this->modelo->crearProfesor($nombre, $email, $password);
             }

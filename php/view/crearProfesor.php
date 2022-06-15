@@ -18,7 +18,7 @@
         </ul>
         <ul class="nav nav-boton" id="login">
             <li id="inicio_sesion" class="icono">
-                <a href="controlador.php?accion=login" class="nav-link activado">
+                <a href="controlador.php?accion=login" class="nav-link">
                     <img src="../../imgs/user.png">
                     <?php
                         if (!empty($_SESSION)) {
@@ -35,9 +35,9 @@
                 if (!empty($_SESSION)) {
                     if ($_SESSION['tipo']=='a' OR $_SESSION['tipo']=='p') {
                         echo "
-                                <li><a href='#' class='nav-link activado'>Crear Palabras</a></li>
                                 <li><a href='controlador.php?accion=crear' class='nav-link'>Crear Ejercicio</a></li>
                                 <li><a href='controlador.php?accion=crearPalabras' class='nav-link'>Crear Palabras</a></li>
+                                <li><a href='#' class='nav-link activado'>Crear Profesor</a></li>
                         ";
                     }
                 }
