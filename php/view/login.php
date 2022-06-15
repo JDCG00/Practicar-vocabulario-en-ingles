@@ -87,7 +87,6 @@
                 echo "<div class=correcto>Cierre de sesión correcto.</div>";
                 $controlador->cerrarSesion();
             }
-            print_r($_SESSION);
             if (isset($_POST['acceder'])){
                 if (!empty($_POST['email']) && !empty($_POST['password'])) {
                     $controlador->validarLogin();

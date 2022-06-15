@@ -140,7 +140,6 @@
                 $nombre = "'".$_POST['nombre']."'";
                 $email = "'".$_POST['email']."'";
                 $password = "'".password_hash($_POST['password'], PASSWORD_DEFAULT)."'";
-                echo $nombre, $email, $password;
                 $this->modelo->crearProfesor($nombre, $email, $password);
             }
         }
