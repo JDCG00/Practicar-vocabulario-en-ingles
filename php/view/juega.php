@@ -40,6 +40,11 @@
                                 <li><a href='controlador.php?accion=crearProfesor' class='nav-link'>Crear Profesor</a></li>
                         ";
                     }
+                    if ($_SESSION['tipo']=='a') {
+                        echo "
+                            <li><a href='controlador.php?accion=crearProfesor' class='nav-link'>Crear Profesor</a></li>
+                        ";
+                    }
                 }
             ?>
         </ul>

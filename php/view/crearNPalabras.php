@@ -37,6 +37,10 @@
                         echo "
                             <li><a href='controlador.php?accion=crear' class='nav-link'>Crear Ejercicio</a></li>
                             <li><a href='#' class='nav-link activado'>Crear Palabras</a></li>
+                        ";
+                    }
+                    if ($_SESSION['tipo']=='a') {
+                        echo "
                             <li><a href='controlador.php?accion=crearProfesor' class='nav-link'>Crear Profesor</a></li>
                         ";
                     }

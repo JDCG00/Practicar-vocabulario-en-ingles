@@ -35,9 +35,13 @@
                 if (!empty($_SESSION)) {
                     if ($_SESSION['tipo']=='a' OR $_SESSION['tipo']=='p') {
                         echo "
-                                <li><a href='controlador.php?accion=crear' class='nav-link'>Crear Ejercicio</a></li>
-                                <li><a href='controlador.php?accion=crearPalabras' class='nav-link'>Crear Palabras</a></li>
-                                <li><a href='controlador.php?accion=crearProfesor' class='nav-link'>Crear Profesor</a></li>
+                            <li><a href='controlador.php?accion=crear' class='nav-link'>Crear Ejercicio</a></li>
+                            <li><a href='controlador.php?accion=crearPalabras' class='nav-link'>Crear Palabras</a></li>
+                        ";
+                    }
+                    if ($_SESSION['tipo']=='a') {
+                        echo "
+                            <li><a href='controlador.php?accion=crearProfesor' class='nav-link'>Crear Profesor</a></li>
                         ";
                     }
                 }
