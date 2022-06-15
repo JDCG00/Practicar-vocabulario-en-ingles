@@ -67,7 +67,7 @@
                 <div class="cut"></div>
                 <label for="password" class="placeholder">Contraseña</label>
             </div>            
-            <input class="submit" type="submit" name="crear" value="Crear Ejercicio">
+            <input class="submit" type="submit" name="crear" value="Crear Profesor">
         </form>
         <?php
             require_once('../controller/controlador.php');
