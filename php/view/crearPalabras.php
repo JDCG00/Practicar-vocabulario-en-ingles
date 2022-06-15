@@ -17,9 +17,30 @@
             <li><a href="controlador.php?accion=contacto" class="nav-link">Contacta</a></li>
         </ul>
         <ul class="nav nav-boton" id="login">
-            <li id="inicio_sesion" class="icono"><a href="controlador.php?accion=login" class="nav-link"><img src="../../imgs/user.png">Login</a></li>
-            <li><a href="controlador.php?accion=crear" class="nav-link">Crear Ejercicio</a></li>
-            <li><a href="#" class="nav-link activado">Crear Palabras</a></li>
+            <li id="inicio_sesion" class="icono">
+                <a href="controlador.php?accion=login" class="nav-link activado">
+                    <img src="../../imgs/user.png">
+                    <?php
+                        if (!empty($_SESSION)) {
+                            echo "Logout</br>
+                                    ".$_SESSION['nombre']."
+                                ";
+                        }else {
+                            echo "Login";
+                        }
+                    ?>
+                </a>
+            </li>
+            <?php
+                if (!empty($_SESSION)) {
+                    if ($_SESSION['tipo']=='a' OR $_SESSION['tipo']=='p') {
+                        echo "
+                                <li><a href='controlador.php?accion=crear' class='nav-link'>Crear Ejercicio</a></li>
+                                <li><a href='#' class='nav-link activado'>Crear Palabras</a></li>
+                        ";
+                    }
+                }
+            ?>
         </ul>
     </nav>
     <div class="contenedor">

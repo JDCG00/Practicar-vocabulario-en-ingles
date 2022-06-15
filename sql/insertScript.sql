@@ -5,11 +5,11 @@ USE VocabularioIngles;
 /* Datos de prueba en la tabla usuarios */
 
 INSERT INTO usuarios(nombre, correo, password, tipo) 
-    VALUES('Jose', 'admin@admin.com', 'admin', 'a'),
-            ('Manuel', 'manuel@guadalupe.es', '1234', 'p'),
-            ('Juan', 'juan@guadalupe.es', '4321', 'p'),
-            ('Pepe', 'pepe@guadalupe.es', '9999', 'p');
-
+    VALUES('Admin', 'admin@admin.com', '$2y$10$YhT7EZHpUo3NWAARsugxu.1QV90s5TkoVHwWulfQE3V3nICSjDz0W', 'a'),  /* contraseña: admin */
+            ('Manuel', 'manuel@guadalupe.es', '$2y$10$zyX58qdkUABa70eAPyRx5OfjnLrY3Ht20AESivRxRO0GsVjzN53Ra', 'p'), /* contraseña: 1234 */
+            ('Juan', 'juan@guadalupe.es', '$2y$10$zyX58qdkUABa70eAPyRx5OfjnLrY3Ht20AESivRxRO0GsVjzN53Ra', 'p'),  /* contraseña: 1234 */
+            ('Pepe', 'pepe@guadalupe.es', '$2y$10$zyX58qdkUABa70eAPyRx5OfjnLrY3Ht20AESivRxRO0GsVjzN53Ra', 'p');  /* contraseña: 1234 */
+ 
 /* Datos de prueba en la tabla clases */
 
 INSERT INTO clases(nombre)

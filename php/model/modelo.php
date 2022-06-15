@@ -93,8 +93,26 @@
             }
             $resultado->close();
         }
-        function validarLogin(){
-            
+        function validarLogin($email){
+            $validarEmail = "SELECT * FROM usuarios WHERE correo = ?;";
+            $resultado = $this->conex->prepare($validarEmail);
+            $resultado->bind_param("s", $email);
+            $resultado->bind_result($idUsuario, $nombre, $correo, $password, $tipo);
+            $resultado->execute();
+            if ($resultado->fetch()!==null) {
+                $this->booleano = true;
+            }else{
+                $this->booleano = false;
+            }
+            $resultado->close();
+            $this->idUsuario = $idUsuario;
+            $this->nombre = $nombre;
+            $this->password = $password;
+            $this->tipo = $tipo;
+        }
+        function crearProfesor($nombre, $email, $password){
+            $insertarProfesor = "INSERT INTO usuarios(nombre, correo, password, tipo) VALUES($nombre, $email, $password, 'p')";
+            $this->conex->query($insertarProfesor);
         }
     }
 ?>

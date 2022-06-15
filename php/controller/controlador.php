@@ -14,6 +14,9 @@
         function crearNPalabrasVista(){
             require_once('../view/crearNPalabras.php');
         }
+        function crearProfesorVista(){
+            require_once('../view/crearProfesor.php');
+        }
         function jugarVista(){
             require_once('../view/juega.php');
         }
@@ -107,11 +110,46 @@
                 }
             }
         }
+        function validarLogin(){
+            if (!empty($_POST['email']) && !empty($_POST['password']) && isset($_POST['acceder'])) {
+                $email = $_POST['email'];
+                $this->modelo->validarLogin($email);
+                $idUsuario = $this->modelo->idUsuario;
+                $nombre = $this->modelo->nombre;
+                $password = $this->modelo->password;
+                $tipo = $this->modelo->tipo;
+                if($this->modelo->booleano==true && password_verify($_POST['password'], $password)){
+                    $this->booleano = true;
+                    $_SESSION['idUsuario'] = $idUsuario;
+                    $_SESSION['nombre'] = $nombre;
+                    $_SESSION['tipo'] = $tipo;
+                    header("Refresh:0.5");
+                }else {
+                    $this->booleano = false;
+                }
+            }
+        }
+        function cerrarSesion(){
+            if (isset($_POST['logout'])) {
+                header("Refresh:0.5");
+                session_destroy();
+            }
+        }
+        function crearProfesor(){
+            if (isset($_POST['crear']) && !empty($_POST['nombre'] && $_POST['email'] && $_POST['password'])) {
+                $nombre = "'".$_POST['nombre']."'";
+                $email = "'".$_POST['email']."'";
+                $password = "'".$_POST['nombre']."'";
+                echo $nombre, $email, $password;
+                $this->modelo->crearProfesor($nombre, $email, $password);
+            }
+        }
     }
 
     $controlador = new Controlador;
     if (isset($_GET['accion'])) {
         ob_start();
+        session_start();
         switch ($_GET['accion']) {
             case 'crear':
                 $controlador->crearEjercicioVista();
@@ -121,6 +159,9 @@
                 break;            
             case 'crearNPalabras':
                 $controlador->crearNPalabrasVista();
+                break;            
+            case 'crearProfesor':
+                $controlador->crearProfesorVista();
                 break;            
             case 'jugar':
                 $controlador->jugarVista();
