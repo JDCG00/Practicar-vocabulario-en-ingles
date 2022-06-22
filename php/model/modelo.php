@@ -113,7 +113,6 @@
         function crearProfesor($nombre, $email, $password){
             $insertarProfesor = "INSERT INTO usuarios(nombre, correo, password, tipo) VALUES($nombre, $email, $password, 'p')";
             $this->conex->query($insertarProfesor);
-            echo $insertarProfesor;
         }
     }
 ?>
